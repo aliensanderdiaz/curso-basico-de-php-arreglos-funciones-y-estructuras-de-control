@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <title>Curso Básico de PHP: Arreglos, Funciones y Estructuras de Control</title>
+</head>
+
+<body>
+  <header class="text-center">
+    <h1>Curso Básico de PHP: Arreglos, Funciones y Estructuras de Control</h1>
+  </header>
+  <main class="container">
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 1 de 25 - ¿Ya conoces los fundamentos de PHP?</h2>
+
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 2 de 25 - ¿Qué son los arreglos?</h2>
+        <pre class="prettyprint">
+
+                &lt?php
+
+                // $edades = [20, 18, 40];
+                $edades = array(20, 18, 40);
+                
+                var_dump($edades);
+                echo "&ltbr>";
+                echo $edades[0];
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 3 de 25 - Arreglos asociativos</h2>
+        <pre class="prettyprint">
+
+                &lt?php
+
+                $edades = array(
+                    "Carlos" => 20,
+                    "Juan" => 18,
+                    "Luna" => 40,
+                );
+                
+                echo "La edad de Carlos es: " . $edades["Carlos"];
+                
+                $cafes = array(
+                    "capuccino" => 50,
+                    "latte" => 49,
+                    "americano" => 70,
+                );
+                
+                echo "&ltbr>";
+                
+                echo "El precio del capuccino es: $" . $cafes["capuccino"];
+                echo "&ltbr>";
+                echo "El precio del americano es: \${$cafes['americano']}";
+                echo "&ltbr>";
+                
+                $personas = array(
+                    "carlos" => array(
+                        "edad" => 25,
+                        "apellido" => "Santana"
+                    ),
+                    "juana" => array(
+                        "edad" => 25,
+                        "apellido" => "De Arco"
+                    ),
+                );
+                
+                echo "La edad de Carlos es: " . $personas['carlos']['edad'];
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 4 de 25 - Manipulando Arreglos</h2>
+        <pre class="prettyprint">
+
+                &lt?php
+
+                $edades = [18, 22, 40, 31];
+                
+                // count
+                echo count($edades);
+                echo "&ltbr>";
+                
+                // array_push
+                array_push($edades, 13);
+                var_dump($edades);
+                
+                echo "&ltbr>";
+                
+                // is_array
+                $esto_no_es_un_arreglo = "";
+                
+                var_dump( is_array($esto_no_es_un_arreglo));
+                echo "&ltbr>";
+                var_dump( is_array($edades));
+                
+                echo "&ltbr>";
+                
+                // explode
+                
+                $lista_de_frutas = "fresa,cereza,manzana";
+                $lista_de_frutas_array = explode(",", $lista_de_frutas);
+                
+                var_dump($lista_de_frutas_array);
+                
+                echo "&ltbr>";
+                $lista_de_frutas_array = ["fresa","cereza","manzana"];
+                $lista_de_frutas = implode("-", $lista_de_frutas_array);
+                
+                echo $lista_de_frutas;
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 5 de 25 - Reto: escuela de michis</h2>
+        <pre class="prettyprint">
+
+              &lt?php
+
+              $escuela = array(
+                  array(
+                      "Nombre" => "Michijose",
+                      "Ocupacion" => "Developer Increible",
+                      "Color" => "Naranja con rayitas",
+                      "Comidas" => array(
+                          "Favoritas" => "Lasaña, Atun",
+                          "NoFavoritas" => "Fresas, Cacahuates"
+                      )
+                  ),
+                  array(
+                      "Nombre" => "Michisancio",
+                      "Ocupacion" => "Engineer Increible",
+                      "Color" => "Negro",
+                      "Comidas" => array(
+                          "Favoritas" => "Pepas, Atun",
+                          "NoFavoritas" => "Fresas, Cacahuates"
+                      )
+                  ),
+                  array(
+                      "Nombre" => "Mr.Michi",
+                      "Ocupacion" => "Diseñador Increible",
+                      "Color" => "Blanco",
+                      "Comidas" => array(
+                          "Favoritas" => "Lasaña, Atun",
+                          "NoFavoritas" => "Fresas, Cacahuates"
+                      )
+                  ),
+              );
+              
+              echo "Las comidas favoritas de Michisancio son: {$escuela[1]['Comidas']['Favoritas']}";
+              echo "&ltbr>";
+              $michisancio = $escuela[1];
+              echo "Las comidas favoritas de Michisancio son: " . $michisancio['Comidas']['Favoritas'];
+              echo "&ltbr>";
+              
+              $ejemplo = "Alex";
+              echo "Mi nombre es $ejemplo";
+              echo "&ltbr>";
+              echo "Mi nombre es {$ejemplo}";
+              echo "&ltbr>";
+              echo "Mi nombre es ${ejemplo}";
+              
+              
+              $mr_michi = $escuela[2];
+              
+              echo "&ltbr>";
+              
+              echo "El color de Mr. Michi es " . $mr_michi['Color'];
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 6 de 25 - Aprende a tomar decisiones con if y else</h2>
+        <pre class="prettyprint">
+
+              &lt?php
+
+              $asientos_disponibles = 4;
+              
+              if ($asientos_disponibles > 0) {
+                  echo "Puedes ver la pelicula de spidey";
+              } else {
+                  echo "Lo sentimos, te tocará spoilearte";
+              }
+              
+              echo "&ltbr>";
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 7 de 25 - Cómo organizar tu codigo con switch</h2>
+        <pre class="prettyprint">
+
+              &lt?php
+
+              $michi = 3;
+              
+              switch ($michi) {
+                  case 1:
+                      echo "Su numero favorito es el 9";
+                      break;
+              
+              
+                  case 2:
+                      echo "Su numero favorito es el 4";
+                      break;
+              
+              
+                  case 3:
+                      echo "Su numero favorito es el 3";
+                      break;
+              
+              
+                  case 4:
+                      echo "Su numero favorito es el 9";
+                      break;
+              
+              
+                  case 5:
+                      echo "Su numero favorito es el 1";
+                      break;
+              
+                  default:
+                      echo "No sabemos su numero favorito";
+                      break;
+              }
+              
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 8 de 25 - Reto: ¿puedo retirar mis donaciones de Twitch?</h2>
+        <pre class="prettyprint">
+
+              &lt?php
+
+              $dinero = (int) readline("Ingresa el dinero que tienes donado(En Dolares): ");
+              // echo "&ltbr>";
+              if ($dinero > 100) {
+                  echo "Tu dinero ya ha pasado a tu cuenta bancaria, tu nuevo saldo es 0";
+              } else {
+                  echo "Para poder retirar tu dinero debes tener acumulado mas de 100 dolares";
+              }
+              
+              // echo "&ltbr>";
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 9 de 25 - ciclo while</h2>
+        <pre class="prettyprint">
+
+            &lt?php
+
+              $contador = 1;
+              
+              while ($contador &lt= 10) {
+                  echo "$contador - Este curso está increible";
+                  echo "&ltbr>";
+                  $contador++;
+              }
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 10 de 25 - ¿Do... While?</h2>
+        <pre class="prettyprint">
+
+              &lt?php
+
+              $usernames = ["Pepito123", "Mr. Michi", "RetaxMain"];
+              
+              do {
+                  # code...
+                  $username = readline("Por favor ingresa tu nuevo nombre de usuario: ");
+              } while ( in_array($username, $usernames) );
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 11 de 25 - Ciclo For</h2>
+        <pre class="prettyprint">
+
+              &lt?php
+
+              for ($contador=0; $contador &lt 10; $contador++) { 
+                  
+                  echo "Este curso esta muy bueno";
+                  echo "&ltbr>";
+              }
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 12 de 25 - ciclo foreach</h2>
+        <pre class="prettyprint">
+
+              &lt?php
+
+              $tiendita_de_cafes = array(
+                  "Americano" => 20,
+                  "Latte" => 25,
+                  "Capuccino" => 27.5,
+                  "Mocca" => 24
+              );
+              
+              foreach ($tiendita_de_cafes as $price) {
+                  echo "El café en cuestión cuesta $$price USD";
+                  echo "&ltbr>";
+              }
+              
+              echo "&ltbr>";
+              
+              foreach ($tiendita_de_cafes as $cafe => $price) {
+                  echo "El café $cafe cuesta $$price USD";
+                  echo "&ltbr>";
+              }
+            </pre>
+
+        <pre class="prettyprint">
+
+              &lt?php
+
+              $tiendita_de_cafes = array(
+                  "Americano" => 20,
+                  "Latte" => 25,
+                  "Recalentado" => 10,
+                  "Capuccino" => 27.5,
+                  "Mocca" => 24
+              );
+              
+              foreach ($tiendita_de_cafes as $cafe => $price) {
+                  echo "Actualmente encontré al café $cafe";
+                  echo "&ltbr>";
+              
+                  if ($cafe == "Latte") {
+                      echo "Encontré al café Latte!";
+                      echo "&ltbr>";
+                      break;
+                  }
+              }
+              
+              echo "&ltbr>";
+              echo "&ltbr>";
+              
+              foreach ($tiendita_de_cafes as $cafe => $price) {
+              
+                  if ($cafe == "Recalentado") {
+                      continue;
+                  }
+              
+                  echo "El café $cafe es muy rico";
+                  echo "&ltbr>";
+              }
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 13 de 25 - Reto: ¿Cuántos caminos hay para llegar al mismo punto?</h2>
+        <pre class="prettyprint">
+
+              &lt?php
+              $anterior = 0;
+              $nuevo = 1;
+              for ($i=2; $i &lt= 10; $i++) { 
+                  // if ($i == 2) {
+                  //     echo "hay $anterior caminos para llegar al punto $i";
+                  //     echo "&ltbr>";
+                  //     continue;
+                  // }
+              
+                  $actual = $anterior + $nuevo;
+                  $anterior = $nuevo;
+                  $nuevo = $actual;
+                  
+                  echo "hay $actual caminos para llegar al punto $i";
+                  echo "&ltbr>";
+              }
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 14 de 25 - Aprende a reutilizar tu código: funciones</h2>
+        <pre class="prettyprint">
+
+              &lt?php
+
+              function getPokemon()
+              {
+                  $numero_aleatorio = rand(1, 5);
+              
+                  switch ($numero_aleatorio) {
+                      case 1:
+                          echo "Charmander &ltbr>";
+                          break;
+                      case 2:
+                          echo "Pikachu &ltbr>";
+                          break;
+                      case 3:
+                          echo "Mewtwo &ltbr>";
+                          break;
+              
+                      default:
+                      echo "Lo siento no tenemos Pokemon &ltbr>";
+                          break;
+                  }
+              }
+              
+              for ($i=0; $i &lt 20; $i++) { 
+                  getPokemon();
+              }
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 15 de 25 - Parámetros de las funciones</h2>
+        <pre class="prettyprint">
+
+              &lt?php
+
+              function esEstudianteLegend($platzi_rank) {
+                  if ($platzi_rank > 20000) {
+                      echo "Felicitaciones! Tu eres legend";
+                      echo "&ltbr>";
+                  } else {
+                      echo "Aún no eres legend";
+                      echo "&ltbr>";
+                  }
+              }
+              
+              esEstudianteLegend(16000);
+              esEstudianteLegend(26000);
+            </pre>
+
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 16 de 25 - Profundizemos en los parámetros</h2>
+        <pre class="prettyprint">
+
+              &lt?php
+
+              function suma($a = 1, $b = 1) {
+                  echo "La suma de $a + $b es: " . ($a + $b) . "&ltbr>";
+              }
+              
+              suma(7, 22);
+              suma(5, 8);
+              suma(7, 22);
+              suma(3);
+              suma();
+              
+              echo "&ltbr>";
+              
+              $arreglo1 = [1, 2, 3];
+              $arreglo2 = [4, 5, 6];
+              
+              $resultado = [...$arreglo1, ...$arreglo2];
+              
+              var_dump($resultado);
+              
+              echo "&ltbr>";
+              echo "&ltbr>";
+              
+              $numeros = [1,2];
+              
+              suma(...$numeros);
+              
+              echo "&ltbr>";
+              echo "&ltbr>";
+              
+              function suma_infinita(...$params) {
+                  $total = 0;
+                  foreach ($params as $numero) {
+                      $total += $numero;
+                  }
+                  echo "El total es: $total &ltbr>";
+              }
+              
+              suma_infinita(1,2,3);
+              suma_infinita(4,5,6);
+              suma_infinita(1,2,3,4,5,6,7,8,9);
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 17 de 25 - Uso de Return</h2>
+        <pre class="prettyprint">
+
+              &lt?php
+
+              function fredy($numero_aleatorio)
+              {
+                  switch ($numero_aleatorio) {
+                      case 1:
+                          return "Nunca pares de aprender. &ltbr>";
+                      case 2:
+                          return "Las empresas no son familia. &ltbr>";
+                      case 3:
+                          return "La tecnología es el futuro &ltbr>";
+                      case 4:
+                          return "Amo PHP &ltbr>";
+                  }
+              }
+              
+              
+              echo (fredy(rand(1, 4)));
+              echo (fredy(rand(1, 4)));
+              echo (fredy(rand(1, 4)));
+              echo (fredy(rand(1, 4)));
+              
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 18 de 25 - Operador de nave espacial</h2>
+        <pre class="prettyprint">
+
+              &lt?php
+
+              $precios_de_cafe = [12, 56, 32, 89, 2, 1];
+              
+              usort($precios_de_cafe, function($a, $b) {
+                  return $a &lt=> $b;
+              });
+              
+              print_r($precios_de_cafe);
+            </pre>
+      </article>
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <article class="col">
+        <h2>Sección 19 de 25 - ¡Expande tu arsenal de funciones!</h2>
+        <p>
+          Funciones de Strings <a href="https://www.php.net/manual/es/ref.strings.php" target="_blank"
+            rel="noopener noreferrer">https://www.php.net/manual/es/ref.strings.php</a>
+
+          <br>
+          Funciones Matematicas <a href="https://www.php.net/manual/en/ref.math.php" target="_blank"
+            rel="noopener noreferrer">https://www.php.net/manual/en/ref.math.php</a>
+
+          <br>
+
+          Funciones Array <a href="https://www.php.net/manual/es/ref.array.php" target="_blank"
+            rel="noopener noreferrer">https://www.php.net/manual/es/ref.array.php</a>
+
+          <br>
+
+          Funciones Fecha y Hora <a href="https://www.php.net/manual/es/ref.datetime.php" target="_blank"
+            rel="noopener noreferrer">https://www.php.net/manual/es/ref.datetime.php</a>
+        </p>
+
+      </article>
+    </section>
+
+    <hr>
+    
+    <section class="row">
+      <article class="col">
+        <h2>Sección 20 de 25 - Reto: completa el Código</h2>
+        <pre class="prettyprint">
+                
+          &lt?php
+          // https://www.php.net/manual/es/function.date.php
+          function obtener_hora() {
+              return date("h:i a");
+          }
+          
+          echo "¡Hola! ¿Me podrías decir la hora? &ltbr>";
+          echo "¡Claro! Son las " . obtener_hora();
+        </pre>
+      </article>
+    </section>
+
+    <hr>
+    
+    <section class="row">
+      <article class="col">
+        <h2>Sección 21 de 25 - ¡Hagamos un juego con PHP!</h2>
+        <pre class="prettyprint">
+                
+          &lt?php
+
+          function clear()
+          {
+          
+              // if (PHP_OS === "WINNT")
+              // system("cls");
+              for ($i = 0; $i &lt 50; $i++) echo "\r\n";
+              // else
+              // system("clear");
+          
+          }
+          
+          $possible_words = [
+              "Bebida",
+              "Prisma",
+              "Ala",
+              "Dolor",
+              "Piloto",
+              "Baldosa",
+              "Terremoto",
+              "Asteroide",
+              "Gallo",
+              "Platzi"
+          ];
+          
+          define("MAX_ATTEMPS", 6);
+          
+          echo "¡Juego del ahorcado!";
+          
+          echo "\n";
+          echo "\n";
+          
+          $choosen_word = $possible_words[rand(0, count($possible_words) - 1)];
+          $choosen_word = strtolower($choosen_word);
+          $word_length = strlen($choosen_word);
+          $disovered_letters = str_pad("", $word_length, "_");
+          $attemps = 0;
+          
+          do {
+              # code...
+          
+              echo "\n";
+              echo  "Palabra de $word_length letras";
+              echo "\n";
+              echo $disovered_letters . "\n\n";
+          
+              $player_letter = readline("Escribe una letra: ");
+              $player_letter = strtolower($player_letter);
+          
+              // $pos = strpos($choosen_word, $player_letter);
+          
+              // if ($pos) {
+              //     echo "La letra $player_letter se encuetra en la posición " . ($pos + 1);
+              // } else {
+              //     echo "La letra $player_letter no se encuentra en la palabra";
+              // }
+          
+              // echo $choosen_word . " - " . $player_letter;
+          
+              // var_dump(str_contains($choosen_word, $player_letter));
+          
+              // if (str_contains($choosen_word, $player_letter)) {
+              if (strpos($choosen_word, $player_letter) !== false) {
+                  $offset = 0;
+                  while (($letter_position = strpos($choosen_word, $player_letter, $offset)) !== false) {
+                      $letter_position = strpos($choosen_word, $player_letter, $offset);
+                      $offset = $letter_position + 1;
+                      // echo $letter_position . " - " . $offset;
+          
+                      $disovered_letters[$letter_position] = $player_letter;
+                  }
+                  echo $disovered_letters;
+              } else {
+                  $attemps++;
+                  clear();
+                  echo "Letra incorrecta, te quedan " . (MAX_ATTEMPS - $attemps) . " intentos.";
+              }
+          } while ($attemps &lt MAX_ATTEMPS && $disovered_letters != $choosen_word);
+          
+          
+          clear();
+          
+          echo "\n";
+          echo "\n";
+          
+          if ($attemps &lt MAX_ATTEMPS) {
+              echo "Felicidades";
+          } else {
+              echo "Vuelve a intentarlo";
+          }
+        </pre>
+      </article>
+    </section>
+
+    <hr>
+    
+    <section class="row">
+      <article class="col">
+        <h2>Sección 22 de 25 - validando las letras de los usuarios</h2>
+        
+      </article>
+    </section>
+
+    <hr>
+    
+    <section class="row">
+      <article class="col">
+        <h2>Sección 23 de 25 - terminando de programar el juego</h2>
+        
+      </article>
+    </section>
+
+    <hr>
+    
+    <section class="row">
+      <article class="col">
+        <h2>Sección 24 de 25 - como interactua php con HTML</h2>
+        <pre class="prettyprint">
+                
+          &lt?php
+          $zorritos = [
+              "https://randomfox.ca/images/1.jpg",
+              "https://randomfox.ca/images/2.jpg",
+              "https://randomfox.ca/images/3.jpg",
+          ];
+          
+          
+          ?>
+          
+          &lt!DOCTYPE html>
+          &lthtml lang="en">
+          &lthead>
+              &ltmeta charset="UTF-8">
+              &ltmeta http-equiv="X-UA-Compatible" content="IE=edge">
+              &ltmeta name="viewport" content="width=device-width, initial-scale=1.0">
+              &lttitle>Document&lt/title>
+          &lt/head>
+          &ltbody>
+              &lth1>Esto es html desde php&lt/h1>
+          
+              &lt?php foreach ($zorritos as $zorrito) { ?>
+                  &ltimg src="&lt?php echo $zorrito ?>">
+                  &lt?php } ?>
+          &lt/body>
+          &lt/html>
+        </pre>
+      </article>
+    </section>
+
+    <hr>
+    
+    <section class="row">
+      <article class="col">
+        <h2>Sección 25 de 25 - Toma el Curso Práctico de PHP</h2>
+        
+      </article>
+    </section>
+
+
+
+
+
+
+
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
